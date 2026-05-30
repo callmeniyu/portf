@@ -1,0 +1,95 @@
+.row {
+  display: flex;
+  gap: 6px;
+  padding: 8px 16px;
+  align-items: center;
+}
+
+/* Shared button base */
+.followBtn,
+.messageBtn,
+.contactBtn,
+.chevronBtn {
+  border: none;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Follow button — primary filled (GitHub) */
+.followBtn {
+  flex: 1;
+  height: 32px;
+  background: var(--ig-accent);
+  color: #fff;
+  letter-spacing: 0.1px;
+}
+
+.followBtn:hover {
+  background: var(--ig-accent-hover);
+}
+
+.followBtn:active {
+  transform: scale(0.97);
+  background: #0080d6;
+}
+
+/* Message button — secondary outlined (LinkedIn) */
+.messageBtn {
+  flex: 1;
+  height: 32px;
+  background: var(--ig-surface-3);
+  color: var(--ig-text-primary);
+  letter-spacing: 0.1px;
+}
+
+.messageBtn:hover {
+  background: var(--ig-border-light);
+}
+
+.messageBtn:active {
+  transform: scale(0.97);
+}
+
+/* Contact button — icon square */
+.contactBtn {
+  width: 32px;
+  height: 32px;
+  background: var(--ig-surface-3);
+  color: var(--ig-text-primary);
+  border-radius: var(--radius-sm);
+  padding: 0;
+}
+
+.contactBtn:hover {
+  background: var(--ig-border-light);
+}
+
+.contactBtn:active {
+  transform: scale(0.92);
+}
+
+/* Chevron / dropdown button */
+.chevronBtn {
+  width: 32px;
+  height: 32px;
+  background: var(--ig-surface-3);
+  color: var(--ig-text-primary);
+  border-radius: var(--radius-sm);
+  padding: 0;
+}
+
+.chevronBtn:hover {
+  background: var(--ig-border-light);
+}
+
+.chevronBtn:active {
+  transform: scale(0.92);
+}

@@ -1,0 +1,264 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: bgFade 0.2s ease;
+}
+
+.modal {
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--ig-bg);
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  max-height: 92dvh;
+  overflow-y: auto;
+  animation: slideInUp 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  scrollbar-width: none;
+}
+
+.modal::-webkit-scrollbar { display: none; }
+
+.handle {
+  width: 36px;
+  height: 4px;
+  background: var(--ig-border-light);
+  border-radius: 2px;
+  margin: 10px auto 0;
+}
+
+/* Image */
+.imgWrapper {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+  background: var(--ig-surface-2);
+  margin-top: 8px;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.imgGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.categoryBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+}
+
+/* Post header */
+.postHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+}
+
+.userMini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatarMini {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--ig-gradient-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.usernameMini {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ig-text-primary);
+}
+
+.projectLocation {
+  font-size: 11px;
+  color: var(--ig-text-muted);
+}
+
+.headerRight {
+  display: flex;
+  gap: 4px;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  color: var(--ig-text-primary);
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background var(--transition);
+}
+
+.iconBtn:hover {
+  background: var(--ig-surface-3);
+}
+
+/* Action bar */
+.actionBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px 8px;
+}
+
+.leftActions {
+  display: flex;
+  gap: 4px;
+}
+
+.actionBtn {
+  background: none;
+  border: none;
+  color: var(--ig-text-primary);
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  transition: transform var(--transition);
+}
+
+.actionBtn:active {
+  transform: scale(0.88);
+}
+
+/* Likes */
+.likes {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ig-text-primary);
+  padding: 0 16px 6px;
+}
+
+/* Caption */
+.caption {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ig-text-primary);
+  padding: 0 16px 10px;
+}
+
+.captionUsername {
+  font-weight: 700;
+}
+
+.captionTitle {
+  font-weight: 600;
+}
+
+.captionDesc {
+  color: var(--ig-text-secondary);
+}
+
+/* Tech tags */
+.techRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 12px;
+}
+
+.techTag {
+  font-size: 13px;
+  color: var(--ig-accent);
+  font-weight: 500;
+}
+
+/* View comments */
+.viewComments {
+  background: none;
+  border: none;
+  color: var(--ig-text-muted);
+  font-size: 13.5px;
+  padding: 0 16px 14px;
+  cursor: pointer;
+  font-family: var(--font);
+  text-align: left;
+}
+
+/* CTA */
+.ctaRow {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 24px;
+}
+
+.ctaLive,
+.ctaGithub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 0;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.ctaLive {
+  flex: 1;
+  background: var(--ig-accent);
+  color: #fff;
+}
+
+.ctaGithub {
+  flex: 1;
+  background: var(--ig-surface-3);
+  color: var(--ig-text-primary);
+}
+
+.ctaLive:hover,
+.ctaGithub:hover {
+  opacity: 0.85;
+}
+
+.ctaLive:active,
+.ctaGithub:active {
+  transform: scale(0.97);
+}
+
+@keyframes bgFade {
+  from { background: rgba(0,0,0,0); }
+  to { background: rgba(0,0,0,0.7); }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}

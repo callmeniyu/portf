@@ -1,0 +1,51 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+}
+
+.cell {
+  position: relative;
+  aspect-ratio: 1;
+  background: var(--ig-surface-2);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+  animation: fadeIn 0.4s ease both;
+  touch-action: manipulation;
+}
+
+.img { object-fit: cover; transition: transform 0.35s ease; }
+.cell:hover .img { transform: scale(1.04); }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+  opacity: 0;
+}
+.cell:hover .overlay,
+.cell:active .overlay {
+  background: rgba(0,0,0,0.4);
+  opacity: 1;
+}
+
+.overlayStats {
+  display: flex;
+  gap: 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.overlayStats span { display: flex; align-items: center; gap: 5px; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

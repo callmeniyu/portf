@@ -1,0 +1,82 @@
+.section {
+  padding: 12px 0 0;
+  border-bottom: 1px solid var(--ig-border);
+  padding-bottom: 16px;
+}
+
+.scrollRow {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding: 0 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Do NOT use scroll-snap on mobile — it intercepts touch events */
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
+.scrollRow::-webkit-scrollbar { display: none; }
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  flex-shrink: 0;
+  cursor: pointer;
+  /* Ensure the item itself handles taps, not scroll */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  border-radius: var(--radius-md);
+  transition: transform 0.15s ease;
+}
+.item:hover  { transform: scale(1.05); }
+.item:active { transform: scale(0.94); }
+
+.ring {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  padding: 2.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  pointer-events: none;
+}
+.ringInner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--ig-bg);
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.iconCircle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--ig-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+.icon { font-size: 26px; line-height: 1; pointer-events: none; }
+.label {
+  font-size: 11.5px;
+  color: var(--ig-text-primary);
+  font-weight: 400;
+  text-align: center;
+  max-width: 68px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}

@@ -1,0 +1,58 @@
+.section {
+  /* Contains the tab bar + content panels */
+}
+
+.tabBar {
+  display: flex;
+  border-bottom: 1px solid var(--ig-border);
+  position: sticky;
+  top: 44px; /* below TopNav */
+  z-index: 50;
+  background: var(--ig-bg);
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  color: var(--ig-text-muted);
+  cursor: pointer;
+  position: relative;
+  transition: color var(--transition);
+  border-bottom: 1px solid transparent;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: transparent;
+  transition: background var(--transition);
+}
+
+.tab.active {
+  color: var(--ig-text-primary);
+}
+
+.tab.active::after {
+  background: var(--ig-text-primary);
+}
+
+.tab:hover {
+  color: var(--ig-text-secondary);
+}
+
+.tabLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
