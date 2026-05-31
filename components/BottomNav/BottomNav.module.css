@@ -25,7 +25,7 @@
 .navItemDisabled {
   background: none;
   border: none;
-  color: var(--ig-border-light);
+  color: rgb(107, 105, 105);
   padding: 8px 14px;
   border-radius: var(--radius-md);
   display: flex;

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import ThemeProvider from '@/components/ThemeProvider/ThemeProvider'
+import SplashScreen from '@/components/SplashScreen/SplashScreen'
 
 export const metadata: Metadata = {
   title: 'Niyas Mohammed | Full-Stack Developer',
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider>
+          <SplashScreen />
           <div id="app-root">{children}</div>
         </ThemeProvider>
       </body>

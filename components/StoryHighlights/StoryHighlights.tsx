@@ -7,37 +7,49 @@ import styles from './StoryHighlights.module.css'
 
 interface StoryHighlightsProps {
   highlights: Highlight[]
+  viewedStories?: Set<string>
+  onStoryViewed?: (id: string) => void
 }
 
-export default function StoryHighlights({ highlights }: StoryHighlightsProps) {
+export default function StoryHighlights({ highlights, viewedStories, onStoryViewed }: StoryHighlightsProps) {
   const [activeStory, setActiveStory] = useState<string | null>(null)
+
+  const handleClose = (id: string) => {
+    onStoryViewed?.(id)
+    setActiveStory(null)
+  }
 
   return (
     <>
       <section className={styles.section} id="story-highlights" aria-label="Story Highlights">
         <div className={styles.scrollRow}>
-          {highlights.map((highlight) => (
-            <div
-              key={highlight.id}
-              id={`highlight-${highlight.id}`}
-              className={styles.item}
-              // Use onPointerUp for reliable mobile tap detection
-              onPointerUp={(e) => { e.currentTarget.releasePointerCapture(e.pointerId); setActiveStory(highlight.id) }}
-              role="button"
-              tabIndex={0}
-              aria-label={`Open ${highlight.label} story`}
-              onKeyDown={(e) => e.key === 'Enter' && setActiveStory(highlight.id)}
-            >
-              <div className={styles.ring} style={{ background: highlight.gradient }}>
-                <div className={styles.ringInner}>
-                  <div className={styles.iconCircle}>
-                    <span className={styles.icon}>{highlight.icon}</span>
+          {highlights.map((highlight) => {
+            const viewed = viewedStories?.has(highlight.id) ?? false
+            return (
+              <div
+                key={highlight.id}
+                id={`highlight-${highlight.id}`}
+                className={styles.item}
+                role="button"
+                tabIndex={0}
+                aria-label={`Open ${highlight.label} story`}
+                onClick={() => setActiveStory(highlight.id)}
+                onKeyDown={(e) => e.key === 'Enter' && setActiveStory(highlight.id)}
+              >
+                <div
+                  className={styles.ring}
+                  style={{ background: viewed ? 'transparent' : highlight.gradient }}
+                >
+                  <div className={`${styles.ringInner} ${viewed ? styles.ringInnerViewed : ''}`}>
+                    <div className={styles.iconCircle}>
+                      <span className={styles.icon}>{highlight.icon}</span>
+                    </div>
                   </div>
                 </div>
+                <span className={styles.label}>{highlight.label}</span>
               </div>
-              <span className={styles.label}>{highlight.label}</span>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </section>
 
@@ -45,7 +57,7 @@ export default function StoryHighlights({ highlights }: StoryHighlightsProps) {
         <StoryViewer
           highlights={highlights}
           initialHighlightId={activeStory}
-          onClose={() => setActiveStory(null)}
+          onClose={() => handleClose(activeStory)}
         />
       )}
     </>
