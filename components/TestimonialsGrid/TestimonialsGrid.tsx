@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { Testimonial } from '@/lib/data'
 import styles from './TestimonialsGrid.module.css'
 
@@ -9,22 +9,26 @@ interface TestimonialsGridProps {
 }
 
 export default function TestimonialsGrid({ testimonials }: TestimonialsGridProps) {
-  const [likedSet, setLikedSet] = useState<Set<string>>(new Set())
-  const [savedSet, setSavedSet] = useState<Set<string>>(new Set())
+  const [likedSet, setLikedSet] = useState<Set<string>>(() => {
+    try {
+      const stored = localStorage.getItem('portfolio-liked-testimonials')
+      return stored ? new Set(JSON.parse(stored)) : new Set()
+    } catch { return new Set() }
+  })
+
+  // Persist likes to localStorage
+  useEffect(() => {
+    try { localStorage.setItem('portfolio-liked-testimonials', JSON.stringify([...likedSet])) } catch {}
+  }, [likedSet])
 
   const toggleLike = (id: string) =>
     setLikedSet(prev => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n })
 
-  const toggleSave = (id: string) =>
-    setSavedSet(prev => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n })
-
   return (
     <div className={styles.feed} id="testimonials-feed">
-      {testimonials.map((t) => {
+      {testimonials.map((t, tIdx) => {
         const liked = likedSet.has(t.id)
-        const saved = savedSet.has(t.id)
-        // Generate a plausible like count
-        const likeBase = 40 + testimonials.indexOf(t) * 13
+        const likeBase = 40 + tIdx * 13
 
         return (
           <article key={t.id} id={`review-${t.id}`} className={styles.post}>
@@ -44,13 +48,13 @@ export default function TestimonialsGrid({ testimonials }: TestimonialsGridProps
               </button>
             </div>
 
-            {/* Review text body (no image) */}
+            {/* Review text body (no image — Instagram-style text post) */}
             <div className={styles.textBody}>
               <p className={styles.reviewText}>"{t.text}"</p>
               <div className={styles.projectTag}>📦 {t.project}</div>
             </div>
 
-            {/* Action bar */}
+            {/* Action bar — only Like button */}
             <div className={styles.actionBar}>
               <div className={styles.leftActions}>
                 <button
@@ -65,29 +69,7 @@ export default function TestimonialsGrid({ testimonials }: TestimonialsGridProps
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                   </svg>
                 </button>
-                <button className={styles.actionBtn} aria-label="Comment">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                </button>
-                <button className={styles.actionBtn} aria-label="Share">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"/>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                  </svg>
-                </button>
               </div>
-              <button
-                className={`${styles.actionBtn} ${saved ? styles.saved : ''}`}
-                onClick={() => toggleSave(t.id)}
-                aria-label="Save"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24"
-                  fill={saved ? 'currentColor' : 'none'}
-                  stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-                </svg>
-              </button>
             </div>
 
             {/* Likes */}
@@ -100,6 +82,11 @@ export default function TestimonialsGrid({ testimonials }: TestimonialsGridProps
               <strong className={styles.captionUser}>niyasmohammed._</strong>
               {' '}tagged by{' '}
               <strong>{t.name.split(' ')[0].toLowerCase().replace(' ', '_')}</strong>
+            </div>
+
+            {/* Star rating */}
+            <div className={styles.ratingRow}>
+              {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
             </div>
 
             {/* Date */}

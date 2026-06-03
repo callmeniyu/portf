@@ -18,34 +18,45 @@ export const profileStory: Highlight = {
   id: "profile-story",
   label: "Niyas",
   icon: "👤",
-  gradient: "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+  gradient:
+    "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
   pages: [
     {
       id: "about-1",
       type: "about",
-      title: "Hey, I'm Niyas 👋",
-      subtitle: "Full-Stack Developer & Product Builder",
-      body: "I build fast, beautiful, and user-centric web & mobile applications. Passionate about turning complex ideas into clean, scalable software — from pixel-perfect UIs to robust back-end systems.",
+      title: "Hi, I'm Niyas 👋",
+      subtitle: "Full Stack Developer",
+      body: "I'm Niyas, a Full Stack Developer who enjoys turning ideas into products people actually use.\n\nOver the years, I've built booking platforms, startup MVPs, e-commerce applications, and SaaS solutions while working with founders, businesses, and startup teams.\n\nCurrently, I'm focused on growing as a Software Engineer while building products of my own.",
       highlight: "📍 Kerala, India · Open to Work",
-      accent: "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+      accent:
+        "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
     },
     {
       id: "about-2",
       type: "about",
       title: "What I Do 🛠️",
-      subtitle: "Full-Stack & Mobile Development",
-      body: "I specialize in building end-to-end digital products — from SaaS platforms and travel booking systems to gamified mobile apps. I bring both technical depth and product thinking to every project.",
-      highlight: "React · Next.js · Node.js · React Native · TypeScript",
-      accent: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      subtitle: "Turning Ideas into Products",
+      body: "I help transform ideas into working products.\n\nMy work ranges from designing user experiences and building frontend interfaces to developing backend systems, APIs, and business workflows.\n\nI enjoy solving problems that sit between technology and real-world business needs.",
+      highlight: "UX · Frontend · Backend · Business Logic",
+      accent: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
     },
     {
       id: "about-3",
       type: "about",
       title: "My Journey 🚀",
-      subtitle: "3 Years of Building Products",
-      body: "Started as a freelance web developer, evolved into leading product teams at startup incubation programs, and now delivering full-stack solutions for international clients. Every project is a chance to grow.",
-      highlight: "3 Startups · 1 International Client · Countless lessons",
-      accent: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+      subtitle: "Curiosity → Code → Products",
+      body: "My journey started long before I wrote my first line of code. As a kid, I was always curious about computers, exploring software, breaking things, fixing them.\n\nThat curiosity led me to Computer Science Engineering at Excel Engineering College, where I joined startup incubation programs, building products like DeWise and Curtainry. Those experiences taught me how ideas become businesses.\n\nAlongside college, I freelanced and worked with real clients - building OASTEL, a travel booking platform serving customers in Malaysia. Real-world projects taught me lessons classrooms never could.\n\nToday I continue as a developer, product builder, and aspiring entrepreneur.",
+      highlight: "Excel Engineering College · CSE · 2026",
+      accent: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)",
+    },
+    {
+      id: "about-4",
+      type: "about",
+      title: "Currently Exploring 🔭",
+      subtitle: "Always Learning",
+      body: "AI & ML\nSystem Design\nMulti-tenant SaaS Architecture\nOperating System",
+      highlight: "Expanding the stack · 2026",
+      accent: "linear-gradient(135deg, #0d0d0d 0%, #1a0533 50%, #0d0d0d 100%)",
     },
   ],
 };
@@ -92,7 +103,13 @@ export const highlights: Highlight[] = [
         location: "Kerala, India",
         description:
           "Contributed to early-stage development of Curtainry, digitizing the curtain industry by connecting customers with products and services. Led product ideation, designed system architecture and workflow diagrams, and developed the frontend experience for the platform.",
-        tech: ["Next.js", "React", "Figma", "Product Design", "System Architecture"],
+        tech: [
+          "Next.js",
+          "React",
+          "Figma",
+          "Product Design",
+          "System Architecture",
+        ],
         logo: "🏠",
         image: "/project_curtainry.png",
       },
@@ -112,8 +129,10 @@ export const highlights: Highlight[] = [
         skills: [
           { name: "React", level: 95, icon: "⚛️" },
           { name: "Next.js", level: 92, icon: "▲" },
-          { name: "TypeScript", level: 88, icon: "🔷" },
+          { name: "Tailwind CSS", level: 98, icon: "🩵" },
           { name: "JavaScript", level: 96, icon: "🟡" },
+          { name: "Redux", level: 87, icon: "🗃️" },
+          { name: "shadcn", level: 85, icon: "🧩" },
         ],
       },
       {
@@ -126,18 +145,6 @@ export const highlights: Highlight[] = [
           { name: "CSS3 / SCSS", level: 93, icon: "🎨" },
           { name: "Framer Motion", level: 82, icon: "🎬" },
           { name: "Figma", level: 85, icon: "🖌️" },
-        ],
-      },
-      {
-        id: "fe-3",
-        type: "skill",
-        category: "State & Data",
-        title: "State Management",
-        skills: [
-          { name: "Redux Toolkit", level: 87, icon: "🗃️" },
-          { name: "Zustand", level: 85, icon: "🐻" },
-          { name: "React Query", level: 88, icon: "🔄" },
-          { name: "GraphQL", level: 78, icon: "💜" },
         ],
       },
     ],
@@ -156,7 +163,7 @@ export const highlights: Highlight[] = [
         skills: [
           { name: "Node.js", level: 90, icon: "🟢" },
           { name: "Express.js", level: 88, icon: "🚂" },
-          { name: "Python", level: 72, icon: "🐍" },
+          { name: "Helmet", level: 82, icon: "🛡️" },
           { name: "REST APIs", level: 93, icon: "🔗" },
         ],
       },
@@ -168,8 +175,9 @@ export const highlights: Highlight[] = [
         skills: [
           { name: "PostgreSQL", level: 85, icon: "🐘" },
           { name: "MongoDB", level: 83, icon: "🍃" },
-          { name: "Redis", level: 76, icon: "🔴" },
-          { name: "Prisma ORM", level: 88, icon: "🔺" },
+          { name: "Firebase", level: 80, icon: "🔥" },
+          { name: "Appwrite", level: 76, icon: "📦" },
+          { name: "Supabase", level: 78, icon: "⚡" },
         ],
       },
       {
@@ -178,10 +186,10 @@ export const highlights: Highlight[] = [
         category: "DevOps & Cloud",
         title: "Deployment",
         skills: [
-          { name: "Docker", level: 80, icon: "🐳" },
-          { name: "AWS", level: 74, icon: "☁️" },
           { name: "CI/CD", level: 78, icon: "🔁" },
           { name: "Vercel / Netlify", level: 92, icon: "▲" },
+          { name: "GitHub", level: 88, icon: "🐙" },
+          { name: "Docker", level: 80, icon: "🐳" },
         ],
       },
     ],
@@ -198,7 +206,7 @@ export const highlights: Highlight[] = [
         title: "Web Development",
         icon: "🌐",
         description:
-          "End-to-end web applications with modern technologies — from landing pages to complex SaaS platforms.",
+          "End-to-end web applications with modern technologies, from landing pages to complex SaaS platforms.",
         features: [
           "Custom React / Next.js Apps",
           "REST API Development",
@@ -223,15 +231,15 @@ export const highlights: Highlight[] = [
       {
         id: "srv-3",
         type: "service",
-        title: "Product Consulting",
-        icon: "💡",
+        title: "Product Design",
+        icon: "🎨",
         description:
-          "From idea to MVP — I help startups and teams architect, plan, and build their products the right way.",
+          "User-centered product design using Figma - wireframes and prototypes to polished UI designs ready for development.",
         features: [
-          "System Architecture Design",
-          "Product Roadmap Planning",
-          "Code Review & Mentoring",
-          "Tech Stack Selection",
+          "Wireframing & Prototyping",
+          "UI/UX Design in Figma",
+          "Design Systems & Components",
+          "User Research & Testing",
         ],
       },
     ],
@@ -288,12 +296,16 @@ export const projects: Project[] = [
     title: "OASTEL",
     description:
       "Full-stack travel booking platform for a Malaysian tourism operator. Features Stripe payments, timeslot management, automated emails, and an admin dashboard.",
-    image: "/project_oastel.png",
+    images: [
+      "/project_oastel.png",
+      "/project_dashboard.png",
+      "/project_ecommerce.png",
+    ],
     tech: ["Next.js", "Stripe", "Node.js", "MongoDB", "Brevo"],
-    github: "https://github.com/callmeniyu",
+    github: "https://github.com/callmeniyu/Oastel.git",
     live: "https://oastel.com",
     category: "Full-Stack",
-    likes: 312,
+    likes: 15,
     comments: 28,
   },
   {
@@ -301,12 +313,12 @@ export const projects: Project[] = [
     title: "DeWise",
     description:
       "Gamified learning platform built with a 3-member team during startup incubation. Users progress through skill-based challenges to monetize their expertise.",
-    image: "/project_dewise.png",
+    images: ["/project_dewise.png", "/project_ai_chat.png"],
     tech: ["React Native", "Expo", "TypeScript", "Firebase", "Node.js"],
-    github: "https://github.com/callmeniyu",
-    live: "https://dewise.app",
+    github: "https://github.com/callmeniyu/dewiseApp",
+    live: "https://www.figma.com/design/nOkg4syDkZKyupOK3n7Bwe/deWise-Prototype?node-id=1305-130&p=f&t=DvGBL5ILTUi4InhG-0",
     category: "Mobile",
-    likes: 241,
+    likes: 7,
     comments: 19,
   },
   {
@@ -314,52 +326,35 @@ export const projects: Project[] = [
     title: "Curtainry",
     description:
       "Early-stage marketplace platform digitizing the curtain industry — connecting customers with curtain products and services through a centralized platform.",
-    image: "/project_curtainry.png",
-    tech: ["Next.js", "React", "Figma", "Product Design", "System Architecture"],
-    github: "https://github.com/callmeniyu",
-    live: "https://curtainry.com",
+    images: [
+      "/project_curtainry.png",
+      "/project_mobile_app.png",
+      "/project_saas.png",
+    ],
+    tech: [
+      "Next.js",
+      "React",
+      "Figma",
+      "Product Design",
+      "System Architecture",
+    ],
+    github: "https://github.com/callmeniyu/curtainry-customer-app",
+    live: "https://curtainry-customer-app.vercel.app/",
     category: "Startup",
-    likes: 158,
+    likes: 4,
     comments: 14,
   },
   {
     id: "proj-4",
-    title: "NexusAI Chat",
-    description:
-      "AI-powered chatbot platform with context awareness, multi-model support (GPT-4, Claude), and team collaboration features.",
-    image: "/project_ai_chat.png",
+    title: "MossyForestTours",
+    description: "Tour booking platform for a business in Cameron Highlands",
+    images: ["/project_mossyforest.png", "/project_mossyforest_2.png"],
     tech: ["Next.js", "OpenAI API", "Prisma", "PostgreSQL", "Tailwind"],
-    github: "https://github.com/callmeniyu",
-    live: "https://nexusai.demo",
-    category: "AI/ML",
-    likes: 421,
+    github: "https://github.com/callmeniyu/mossyforesttours-server",
+    live: "https://mossyforest.my",
+    category: "Booking System",
+    likes: 10,
     comments: 58,
-  },
-  {
-    id: "proj-5",
-    title: "DataSight Analytics",
-    description:
-      "Real-time analytics dashboard with interactive charts, custom date ranges, and PDF export. Used by 500+ businesses for data-driven decisions.",
-    image: "/project_dashboard.png",
-    tech: ["React", "D3.js", "Node.js", "MongoDB", "WebSockets"],
-    github: "https://github.com/callmeniyu",
-    live: "https://datasight.demo",
-    category: "Frontend",
-    likes: 193,
-    comments: 21,
-  },
-  {
-    id: "proj-6",
-    title: "ShopSphere",
-    description:
-      "Full-stack e-commerce platform with real-time inventory, Stripe payments, and admin dashboard. Handles 10K+ daily transactions.",
-    image: "/project_ecommerce.png",
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "Stripe", "Redis"],
-    github: "https://github.com/callmeniyu",
-    live: "https://shopsphere.demo",
-    category: "E-commerce",
-    likes: 248,
-    comments: 32,
   },
 ];
 
@@ -489,7 +484,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  image: string;
+  images: string[];
   tech: string[];
   github: string;
   live: string;

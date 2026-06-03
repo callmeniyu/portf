@@ -15,7 +15,9 @@
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
 }
-.scrollRow::-webkit-scrollbar { display: none; }
+.scrollRow::-webkit-scrollbar {
+  display: none;
+}
 
 .item {
   display: flex;
@@ -32,8 +34,12 @@
   border-radius: var(--radius-md);
   transition: transform 0.15s ease;
 }
-.item:hover  { transform: scale(1.05); }
-.item:active { transform: scale(0.94); }
+.item:hover {
+  transform: scale(1.05);
+}
+.item:active {
+  transform: scale(0.94);
+}
 
 .ring {
   width: 68px;
@@ -43,7 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   pointer-events: none;
   transition: background 0.4s ease;
 }
@@ -74,7 +80,11 @@
   overflow: hidden;
   pointer-events: none;
 }
-.icon { font-size: 26px; line-height: 1; pointer-events: none; }
+.icon {
+  font-size: 26px;
+  line-height: 1;
+  pointer-events: none;
+}
 .label {
   font-size: 11.5px;
   color: var(--ig-text-primary);
@@ -85,4 +95,36 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   pointer-events: none;
+}
+
+/* ─── Desktop layout ─── */
+@media (min-width: 768px) {
+  .section {
+    padding: 10px 0 0;
+    padding-bottom: 14px;
+  }
+
+  .scrollRow {
+    padding: 0 24px 0 70px;
+    justify-content: flex-start;
+    gap: 4px;
+  }
+
+  .item {
+    padding: 6px 12px;
+  }
+
+  .ring {
+    width: 80px;
+    height: 80px;
+  }
+
+  .icon {
+    font-size: 30px;
+  }
+
+  .label {
+    font-size: 13px;
+    max-width: 80px;
+  }
 }

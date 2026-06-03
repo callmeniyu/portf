@@ -17,7 +17,16 @@
   background: rgba(250, 250, 250, 0.92);
 }
 
-.spacer { width: 44px; }
+/* Hide on desktop (Instagram style) */
+@media (min-width: 768px) {
+  .nav {
+    display: none;
+  }
+}
+
+.spacer {
+  width: 44px;
+}
 
 .iconBtn {
   background: none;
@@ -33,8 +42,12 @@
   min-height: 44px;
   touch-action: manipulation;
 }
-.iconBtn:hover  { background: var(--ig-surface-3); }
-.iconBtn:active { transform: scale(0.92); }
+.iconBtn:hover {
+  background: var(--ig-surface-3);
+}
+.iconBtn:active {
+  transform: scale(0.92);
+}
 
 .userInfo {
   display: flex;
@@ -65,7 +78,7 @@
   overflow: hidden;
   min-width: 240px;
   animation: dropIn 0.18s ease;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 /* Theme toggle row */
@@ -84,7 +97,9 @@
   font-weight: 600;
   color: var(--ig-text-primary);
 }
-.themeIcon { font-size: 18px; }
+.themeIcon {
+  font-size: 18px;
+}
 
 /* iOS-style toggle */
 .toggleTrack {
@@ -101,8 +116,14 @@
   touch-action: manipulation;
   flex-shrink: 0;
 }
-.toggleDark  { background: #3a3a3a; justify-content: flex-start; }
-.toggleLight { background: #0095f6; justify-content: flex-end; }
+.toggleDark {
+  background: #3a3a3a;
+  justify-content: flex-start;
+}
+.toggleLight {
+  background: #0095f6;
+  justify-content: flex-end;
+}
 
 .toggleIcon {
   position: absolute;
@@ -110,14 +131,17 @@
   left: 6px;
   transition: all 0.3s ease;
 }
-.toggleLight .toggleIcon { left: auto; right: 6px; }
+.toggleLight .toggleIcon {
+  left: auto;
+  right: 6px;
+}
 
 .toggleThumb {
   width: 22px;
   height: 22px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
   z-index: 1;
 }
@@ -146,8 +170,12 @@
   cursor: pointer;
   touch-action: manipulation;
 }
-.dropdownItem:last-child { border-bottom: none; }
-.dropdownItem:hover { background: var(--ig-surface-3); }
+.dropdownItem:last-child {
+  border-bottom: none;
+}
+.dropdownItem:hover {
+  background: var(--ig-surface-3);
+}
 .itemIcon {
   display: flex;
   align-items: center;
@@ -156,6 +184,12 @@
 }
 
 @keyframes dropIn {
-  from { opacity: 0; transform: translateY(-8px) scale(0.95); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

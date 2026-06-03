@@ -5,7 +5,7 @@
   gap: 10px;
 }
 
-/* Top row */
+/* Top row — avatar + stats side-by-side on mobile */
 .topRow {
   display: flex;
   align-items: center;
@@ -89,7 +89,7 @@
 .bio p { font-size: 13.5px; line-height: 1.5; color: var(--ig-text-primary); }
 
 /* Links */
-.linksRow { display: flex; flex-direction: column; gap: 4px; }
+.linksRow { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
 .link {
   display: flex;
   align-items: center;
@@ -102,7 +102,7 @@
 .link:hover { opacity: 0.75; }
 
 /* Tags */
-.tagRow { display: flex; gap: 8px; flex-wrap: wrap; }
+.tagRow { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
 .resumeTag {
   font-size: 12px;
   color: var(--ig-text-secondary);
@@ -122,4 +122,325 @@
   padding: 3px 10px;
   border-radius: var(--radius-full);
   font-weight: 600;
+}
+
+/* Mobile-first adjustments for integrated ActionButtons & desktop row */
+.desktopUserRow {
+  display: none;
+}
+.actionButtonsWrapper {
+  margin: 0 -16px;
+  width: calc(100% + 32px);
+}
+
+/* ============================================================
+   Desktop — Instagram 2-column layout using CSS Grid
+   ============================================================ */
+@media (min-width: 768px) {
+  .section {
+    display: grid;
+    grid-template-columns: 290px 1fr;
+    gap: 12px 0px;
+    padding: 30px 24px 0;
+  }
+
+  /* Make topRow transparent in grid so avatar & stats become direct grid children */
+  .topRow {
+    display: contents;
+  }
+
+  /* ── Left column: avatar ── */
+  .avatarBtn {
+    grid-column: 1;
+    grid-row: 1 / 8;     /* span all rows regardless of content height */
+    justify-self: center;
+    align-self: start;
+    margin-left: 0;
+  }
+
+  .ring, .ringViewed {
+    padding: 3.5px;
+  }
+
+  .avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  /* ── Right column, row 1: Desktop Username + Menu ── */
+  .desktopUserRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 8px;
+  }
+
+  .desktopUserRowLeft {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .desktopUsername {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ig-text-primary);
+  }
+
+  .verificationBadge {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .menuContainer {
+    position: relative;
+    display: inline-block;
+  }
+
+  .desktopMenuBtn {
+    background: none;
+    border: none;
+    color: var(--ig-text-primary);
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition);
+    cursor: pointer;
+  }
+  .desktopMenuBtn:hover {
+    background: var(--ig-surface-3);
+  }
+  .desktopMenuBtn:active {
+    transform: scale(0.95);
+  }
+
+  /* ── Right column, row 2: Stats ── */
+  .stats {
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: flex-start;
+    gap: 40px;
+    margin: 0 0 12px 0;
+    padding: 0;
+  }
+
+  .statItem {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .statValue {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .statLabel {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--ig-text-primary);
+    letter-spacing: normal;
+  }
+
+  /* ── Right column, row 3: Name Block ── */
+  .nameBlock {
+    grid-column: 2;
+    grid-row: 3;
+    margin: 0 0 4px 0;
+    padding: 0;
+  }
+  .name {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .profession {
+    font-size: 14px;
+    color: var(--ig-text-secondary);
+  }
+
+  /* ── Right column, row 4: Bio ── */
+  .bio {
+    grid-column: 2;
+    grid-row: 4;
+    margin: 0 0 6px 0;
+    padding: 0;
+  }
+  .bio p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── Right column, row 5: Links ── */
+  .linksRow {
+    grid-column: 2;
+    grid-row: 5;
+    margin: 0 0 6px 0;
+    padding: 0;
+  }
+  .link {
+    font-size: 14px;
+  }
+
+  /* ── Right column, row 6: Tags ── */
+  .tagRow {
+    grid-column: 2;
+    grid-row: 6;
+    margin: 0 0 12px 0;
+    padding: 0;
+  }
+
+  .resumeTag, .tagGreen {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+
+  /* ── Span full width, left-aligned with avatar ── */
+  .actionButtonsWrapper {
+    grid-column: 1 / -1;
+    grid-row: 7;
+    margin: 16px 0 0 0;
+    padding-left: 70px;
+    width: 100%;
+  }
+
+  /* Settings dropdown menu (desktop specific styling) */
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: 300;
+    background: var(--ig-surface-2);
+    border: 1px solid var(--ig-border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    min-width: 240px;
+    animation: dropIn 0.18s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  }
+
+  .themeRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: var(--ig-surface-3);
+  }
+
+  .themeLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ig-text-primary);
+  }
+
+  .themeIcon {
+    font-size: 18px;
+  }
+
+  .toggleTrack {
+    position: relative;
+    width: 50px;
+    height: 28px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 3px 4px;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .toggleDark {
+    background: #3a3a3a;
+    justify-content: flex-start;
+  }
+
+  .toggleLight {
+    background: #0095f6;
+    justify-content: flex-end;
+  }
+
+  .toggleIcon {
+    position: absolute;
+    font-size: 13px;
+    left: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .toggleLight .toggleIcon {
+    left: auto;
+    right: 6px;
+  }
+
+  .toggleThumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--ig-border);
+  }
+
+  .dropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 16px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--ig-border);
+    color: var(--ig-text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    transition: background var(--transition);
+    font-family: var(--font);
+    cursor: pointer;
+  }
+
+  .dropdownItem:last-child {
+    border-bottom: none;
+  }
+
+  .dropdownItem:hover {
+    background: var(--ig-surface-3);
+  }
+
+  .itemIcon {
+    display: flex;
+    align-items: center;
+    color: var(--ig-text-secondary);
+    flex-shrink: 0;
+  }
+
+  @keyframes dropIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
 }

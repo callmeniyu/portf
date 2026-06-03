@@ -136,3 +136,35 @@
   from { opacity: 0; transform: translateY(-6px) scale(0.96); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+/* ─── Desktop wider layout ─── */
+@media (min-width: 768px) {
+  .wrapper {
+    padding: 6px 0 0;
+  }
+
+  .row {
+    gap: 8px;
+  }
+
+  .followBtn,
+  .messageBtn {
+    height: 38px;
+    font-size: 15px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+  }
+
+  .contactBtn,
+  .chevronBtn {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+  }
+
+  .followBtn svg,
+  .messageBtn svg {
+    width: 18px;
+    height: 18px;
+  }
+}

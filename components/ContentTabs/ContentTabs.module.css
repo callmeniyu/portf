@@ -56,3 +56,21 @@
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
+
+/* ─── Desktop layout ─── */
+@media (min-width: 768px) {
+  .tab {
+    padding: 10px 0;
+    gap: 6px;
+  }
+
+  .tab svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .tabLabel {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+}

@@ -4,7 +4,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 470px;
+  max-width: var(--max-width);
   height: 49px;
   background: rgba(0, 0, 0, 0.88);
   backdrop-filter: blur(12px);
@@ -75,6 +75,13 @@
   font-weight: 700;
   color: #fff;
   border: 2.5px solid var(--ig-text-primary);
+}
+
+/* Desktop: hide bottom nav (Instagram desktop has no bottom nav) */
+@media (min-width: 768px) {
+  .nav {
+    display: none;
+  }
 }
 
 @media (max-width: 470px) {

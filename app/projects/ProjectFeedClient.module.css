@@ -9,6 +9,12 @@
   margin: 0 auto;
 }
 
+@media (min-width: 768px) {
+  .page {
+    max-width: 975px;
+  }
+}
+
 /* Top bar */
 .topBar {
   display: flex;
@@ -78,13 +84,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: var(--ig-gradient-btn);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
+  object-fit: cover;
   flex-shrink: 0;
 }
 .postUsername { font-size: 13.5px; font-weight: 700; color: var(--ig-text-primary); }
@@ -108,9 +108,37 @@
   width: 100%;
   aspect-ratio: 1;
   background: var(--ig-surface-2);
-  max-height: 45vh;
+  max-height: 55vh;
+  overflow: hidden;
 }
 .postImg { object-fit: cover; }
+
+/* Desktop: natural aspect ratio, no square crop */
+@media (min-width: 768px) {
+  .imageWrap {
+    aspect-ratio: auto;
+    min-height: 50vh;
+    max-height: 70vh;
+  }
+  .postImg {
+    object-fit: cover;
+    background: var(--ig-surface-2);
+  }
+}
+
+/* Carousel tap zones */
+.carouselLeft,
+.carouselRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30%;
+  z-index: 5;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.carouselLeft { left: 0; }
+.carouselRight { right: 0; }
 
 /* Dot indicators */
 .dots {
@@ -120,13 +148,17 @@
   transform: translateX(-50%);
   display: flex;
   gap: 4px;
+  z-index: 6;
 }
 .dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
+.dot:hover { background: rgba(255,255,255,0.8); }
 .dotActive { background: #fff; }
 
 /* Post content */
@@ -190,13 +222,6 @@
   font-size: 12.5px;
   color: var(--ig-accent);
   font-weight: 500;
-}
-
-.viewComments {
-  font-size: 13px;
-  color: var(--ig-text-muted);
-  padding: 0 16px 10px;
-  cursor: pointer;
 }
 
 /* CTA row */

@@ -41,12 +41,9 @@
   touch-action: manipulation;
 }
 
-/* Review text body */
+/* Review text body — seamless, no background/border like Instagram text posts */
 .textBody {
   padding: 4px 16px 12px;
-  background: var(--ig-surface);
-  border-top: 1px solid var(--ig-border);
-  border-bottom: 1px solid var(--ig-border);
 }
 .reviewText {
   font-size: 15px;
@@ -98,3 +95,11 @@
 .caption  { font-size: 13.5px; color: var(--ig-text-primary); padding: 0 16px 4px; line-height: 1.5; }
 .captionUser { font-weight: 700; }
 .date     { font-size: 11px; color: var(--ig-text-muted); padding: 0 16px 14px; text-transform: uppercase; letter-spacing: 0.4px; }
+
+/* Star rating */
+.ratingRow {
+  font-size: 14px;
+  color: #ffc83d;
+  padding: 0 16px 6px;
+  letter-spacing: 1px;
+}
