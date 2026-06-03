@@ -6,9 +6,9 @@ export const profile = {
   profession: "Full-Stack Developer · Product Builder",
   avatar: "/profile.png",
   bio: "🚀 React · Next.js · Node.js · TypeScript\n✨ Turning ideas into pixel-perfect products\n📍 Based in Kerala, India",
-  postsCount: 3,
-  followersCount: "1.4K",
-  followingCount: 248,
+  projectsCount: "5+",
+  stacksCount: "10+",
+  experienceCount: "3+",
   website: "niyasmohammed.dev",
   email: "hello@niyasmohammed.dev",
 };

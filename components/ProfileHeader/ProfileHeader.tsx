@@ -104,7 +104,13 @@ export default function ProfileHeader({
       <div className={styles.desktopUserRow}>
         <div className={styles.desktopUserRowLeft}>
           <h2 className={styles.desktopUsername}>{profile.username}</h2>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={styles.verificationBadge}>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            className={styles.verificationBadge}
+          >
             <path
               d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
               stroke="#0095f6"
@@ -131,12 +137,17 @@ export default function ProfileHeader({
 
           {menuOpen && (
             <>
-              <div className={styles.backdrop} onClick={() => setMenuOpen(false)} />
+              <div
+                className={styles.backdrop}
+                onClick={() => setMenuOpen(false)}
+              />
               <div className={styles.dropdown} id="desktop-menu-dropdown">
                 {/* Theme Toggle */}
                 <div className={styles.themeRow}>
                   <div className={styles.themeLabel}>
-                    <span className={styles.themeIcon}>{isDark ? "🌙" : "☀️"}</span>
+                    <span className={styles.themeIcon}>
+                      {isDark ? "🌙" : "☀️"}
+                    </span>
                     <span>{isDark ? "Dark Mode" : "Light Mode"}</span>
                   </div>
                   <button
@@ -197,16 +208,16 @@ export default function ProfileHeader({
         {/* Instagram-style stats */}
         <div className={styles.stats}>
           <div className={styles.statItem}>
-            <span className={styles.statValue}>{profile.postsCount}</span>
+            <span className={styles.statValue}>{profile.projectsCount}</span>
             <span className={styles.statLabel}>projects</span>
           </div>
           <div className={styles.statItem}>
-            <span className={styles.statValue}>{profile.followersCount}</span>
-            <span className={styles.statLabel}>followers</span>
+            <span className={styles.statValue}>{profile.stacksCount}</span>
+            <span className={styles.statLabel}>stacks</span>
           </div>
           <div className={styles.statItem}>
-            <span className={styles.statValue}>{profile.followingCount}</span>
-            <span className={styles.statLabel}>following</span>
+            <span className={styles.statValue}>{profile.experienceCount}</span>
+            <span className={styles.statLabel}>Exp in Js</span>
           </div>
         </div>
       </div>
