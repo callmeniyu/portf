@@ -13,6 +13,17 @@ export const metadata: Metadata = {
     description: 'Full-Stack Developer crafting beautiful web applications.',
     type: 'website',
   },
+  icons: {
+    icon: [
+      { url: '/favicons/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicons/favicon-96x96.png', type: 'image/png', sizes: '96x96' },
+      { url: '/favicons/favicon.ico', sizes: 'any' },
+    ],
+    apple: [
+      { url: '/favicons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/favicons/site.webmanifest',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
