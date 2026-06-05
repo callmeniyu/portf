@@ -55,22 +55,41 @@ export default function StoryViewer({
   const rafRef = useRef<number>(0);
   const startTimeRef = useRef<number>(0);
   const pausedProgressRef = useRef<number>(0);
+  // Track which highlight IDs have been fully viewed (all pages completed)
+  const fullyViewedRef = useRef<Set<string>>(new Set());
 
   const highlight = highlights[currentHighlight];
   const pages = highlight.pages;
+
+  // Mark a highlight as fully viewed when its last page is reached
+  const markFullyViewed = useCallback(
+    (highlightIndex: number, pageIndex: number) => {
+      const h = highlights[highlightIndex];
+      if (pageIndex >= h.pages.length - 1) {
+        fullyViewedRef.current.add(h.id);
+      }
+    },
+    [highlights],
+  );
 
   const goNext = useCallback(() => {
     if (currentPage < pages.length - 1) {
       setCurrentPage((p) => p + 1);
       setProgress(0);
-    } else if (currentHighlight < highlights.length - 1) {
-      setCurrentHighlight((h) => h + 1);
-      setCurrentPage(0);
-      setProgress(0);
     } else {
-      onClose();
+      // Last page of current highlight — mark it fully viewed
+      markFullyViewed(currentHighlight, currentPage);
+      if (currentHighlight < highlights.length - 1) {
+        setCurrentHighlight((h) => h + 1);
+        setCurrentPage(0);
+        setProgress(0);
+      } else {
+        // All stories done — go back through history so the entry is cleaned
+        // up; the popstate handler will call onClose with the viewed IDs.
+        history.back();
+      }
     }
-  }, [currentPage, pages.length, currentHighlight, highlights.length, onClose]);
+  }, [currentPage, pages.length, currentHighlight, highlights.length, markFullyViewed]);
 
   const goPrev = useCallback(() => {
     if (currentPage > 0) {
@@ -103,18 +122,35 @@ export default function StoryViewer({
     return () => cancelAnimationFrame(rafRef.current);
   }, [currentHighlight, currentPage, paused, goNext]);
 
+  // Push a fake history entry so the browser Back button closes the viewer
+  // instead of navigating away from the page.
+  useEffect(() => {
+    history.pushState({ storyOpen: true }, "");
+    const onPop = () => {
+      onClose([...fullyViewedRef.current]);
+    };
+    window.addEventListener("popstate", onPop);
+    return () => {
+      window.removeEventListener("popstate", onPop);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") goNext();
       if (e.key === "ArrowLeft") goPrev();
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        // Clean up the fake history entry we pushed
+        history.back();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [goNext, goPrev, onClose]);
 
   return (
-    <div className={styles.overlay} id="story-viewer" onClick={() => onClose()}>
+    <div className={styles.overlay} id="story-viewer" onClick={() => history.back()}>
       <div className={styles.container} onClick={(e) => e.stopPropagation()}>
         {/* Progress bars */}
         <div className={styles.progressRow}>
@@ -183,7 +219,10 @@ export default function StoryViewer({
             </button>
             <button
               className={styles.headerBtn}
-              onClick={() => onClose()}
+              onClick={() => {
+                // Go back in history — the popstate handler will call onClose
+                history.back();
+              }}
               aria-label="Close"
             >
               <svg
